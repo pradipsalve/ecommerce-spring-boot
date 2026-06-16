@@ -5,8 +5,14 @@ import com.Ecom.Entity.Product;
 import com.Ecom.Entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 public interface CartItemRepository extends JpaRepository<CartItem,Long> {
     CartItem findByUserAndProduct(User user, Product product);
 
     void deleteByProductAndUser(Product product, User user);
+
+     List <CartItem>findByuser(User user);
+
+    void deleteByUser(User user);
 }

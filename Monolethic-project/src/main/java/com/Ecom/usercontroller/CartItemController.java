@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("api")
@@ -32,7 +34,12 @@ public class CartItemController {
             return ResponseEntity.badRequest().build();
 
         return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
 
+
+    @GetMapping("/getcart")
+    public ResponseEntity <List<CartItem>> getcart(@RequestHeader("X-USER-ID") String userId){
+        return ResponseEntity.ok(cartItemService.getcard(userId));
     }
 }
 
